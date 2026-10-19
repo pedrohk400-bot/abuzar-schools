@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مجموعة مدارس دكتور أبوذر الكودة</title>
+
+<meta name="description" content="منصة مجموعة مدارس دكتور أبوذر الكودة التعليمية - التعليم، الأخبار، الجداول والخدمات المدرسية.">
+
+<style>
+:root {
+  --blue: #0756c9;
+  --blue2: #0b76ed;
+  --light: #eef5ff;
+  --white: #ffffff;
+  --text: #14243b;
+  --muted: #66758a;
+  --border: #e3eaf4;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Tahoma, sans-serif;
+  background: #f7faff;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.container {
+  width: min(1120px, 92%);
+  margin: auto;
+}
+
+/* Header */
+
+header {
+  background: rgba(255,255,255,.97);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  background: linear-gradient(135deg, var(--blue), #39a0ff);
+  box-shadow: 0 6px 18px #0756c933;
+}
+
+.brand h1 {
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--blue);
+}
+
+.brand small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: var(--blue2);
+}
+
+.menu-btn {
+  display: none;
+  border: 0;
+  background: var(--light);
+  color: var(--blue);
+  border-radius: 10px;
+  padding: 9px 13px;
+  font-size: 21px;
+}
+
+/* Hero */
+
+.hero {
+  padding: 85px 0 75px;
+  background:
+    radial-gradient(circle at 10% 15%, #cfe4ff 0, transparent 30%),
+    linear-gradient(135deg, #f7faff, #eaf3ff);
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 45px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 30px;
+  background: #dceaff;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero h2 {
+  font-size: clamp(31px, 5vw, 49px);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.hero h2 span {
+  color: var(--blue);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 600px;
+  margin-bottom: 28px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 13px;
+  padding: 13px 22px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 8px 20px #0756c933;
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--blue);
+  border: 1px solid var(--border);
+}
+
+.hero-visual {
+  min-height: 310px;
+  background: linear-gradient(145deg, #0756c9, #1689f8);
+  border-radius: 32px;
+  padding: 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 22px 50px #0756c92b;
+}
+
+.hero-visual::before,
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  border: 1px solid #ffffff33;
+  border-radius: 50%;
+}
+
+.hero-visual::before {
+  width: 270px;
+  height: 270px;
+  left: -90px;
+  top: -90px;
+}
+
+.hero-visual::after {
+  width: 190px;
+  height: 190px;
+  right: -60px;
+  bottom: -70px;
+}
+
+.school-icon {
+  font-size: 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-visual h3,
+.hero-visual p,
+.hero-visual .visual-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-visual h3 {
+  font-size: 24px;
+  margin-top: 15px;
+}
+
+.hero-visual p {
+  color: #e6f2ff;
+  font-size: 14px;
+  margin: 7px 0 0;
+}
+
+.visual-bottom {
+  border-top: 1px solid #ffffff40;
+  padding-top: 15px;
+  margin-top: 24px;
+  font-size: 12px;
+}
+
+/* General sections */
+
+section {
+  padding: 70px 0;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-head h2 {
+  font-size: 29px;
+  margin-bottom: 8px;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px #17365d0d;
+  border-color: #b9d5ff;
+}
+
+.card-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  background: var(--light);
+  color: var(--blue);
+  border-radius: 16px;
+  font-size: 27px;
+  margin-bottom: 17px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 9px;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* About */
+
+.about {
+  background: white;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-box {
+  background: var(--light);
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.about-box .big-icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.about h2 {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.about p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.check {
+  margin: 10px 0;
+  color: #23415f;
+  font-size: 14px;
+}
+
+/* Branches */
+
+.branch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.branch-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.branch-card h3 {
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.branch-card p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #fff4d6;
+  color: #805b00;
+}
+
+/* Contact */
+
+.contact {
+  background: linear-gradient(135deg, #0756c9, #1689f8);
+  color: white;
+  text-align: center;
+}
+
+.contact p {
+  color: #e2efff;
+  margin: 10px 0 25px;
+  font-size: 14px;
+}
+
+.contact .btn {
+  background: white;
+  color: var(--blue);
+}
+
+/* Footer */
+
+footer {
+  padding: 27px 0;
+  background: #0c1c33;
+  color: #d9e7fa;
+  text-align: center;
+  font-size: 12px;
+}
+
+footer p + p {
+  margin-top: 5px;
+  color: #a9bfdc;
+}
+
+/* Demo notice */
+
+.demo-notice {
+  background: #fff8e7;
+  border-bottom: 1px solid #f1dfb4;
+  color: #735315;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 76px;
+    right: 0;
+    left: 0;
+    padding: 20px 5%;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .hero {
+    padding: 55px 0;
+  }
+
+  .hero-grid,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 260px;
+  }
+
+  .services-grid,
+  .branch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 55px 0;
+  }
+
+  .brand h1 {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="demo-notice">
+  نسخة تجريبية للتصميم والعرض — بانتظار اعتماد وإضافة البيانات الرسمية للمدارس.
+</div>
+
+<header>
+  <div class="container navbar">
+
+    <a class="brand" href="#home">
+      <div class="logo">م</div>
+      <div>
+        <h1>مجموعة مدارس<br>دكتور أبوذر الكودة</h1>
+        <small>نحو تعليم أفضل ومستقبل مشرق</small>
+      </div>
+    </a>
+
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="فتح القائمة">
+      ☰
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" onclick="closeMenu()">الرئيسية</a>
+      <a href="#services" onclick="closeMenu()">خدماتنا</a>
+      <a href="#about" onclick="closeMenu()">عن المنصة</a>
+      <a href="#branches" onclick="closeMenu()">الفروع</a>
+      <a href="#contact" onclick="closeMenu()">تواصل معنا</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+
+      <div>
+        <span class="badge">منصة تعليمية مدرسية</span>
+
+        <h2>
+          التعليم طريقنا<br>
+          إلى <span>مستقبل أفضل</span>
+        </h2>
+
+        <p>
+          مرحباً بكم في الموقع التجريبي لمجموعة مدارس دكتور أبوذر الكودة.
+          نسعى إلى تقديم تجربة تعليمية منظمة تجمع المدرسة والطالب
+          وولي الأمر في مكان واحد.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#services">
+            اكتشف خدماتنا ←
+          </a>
+
+          <a class="btn btn-secondary" href="#about">
+            تعرّف علينا
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="school-icon">🎓</div>
+
+        <div>
+          <h3>معاً نحو التميز</h3>
+          <p>بيئة تعليمية ملهمة، ومعرفة تصنع المستقبل.</p>
+        </div>
+
+        <div class="visual-bottom">
+          مجموعة مدارس دكتور أبوذر الكودة
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+
+      <div class="section-head">
+        <h2>خدماتنا التعليمية</h2>
+        <p>خدمات مقترحة لتنظيم التواصل والعملية التعليمية.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <article class="card">
+          <div class="card-icon">📚</div>
+          <h3>الدروس والمراجعات</h3>
+          <p>مساحة مقترحة لنشر الدروس والمراجعات والمواد التعليمية للطلاب.</p>
+          <a href="#contact">التفاصيل قريباً ←</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📢</div>
+          <h3>الأخبار والإعلانات</h3>
+          <p>متابعة إعلانات المدرسة والتنويهات والأنشطة المدرسية في مكان واحد.</p>
+          <a href="#contact">التفاصيل قريباً ←</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🗓️</div>
+          <h3>الجداول والامتحانات</h3>
+          <p>قسم مقترح للجداول الدراسية ومواعيد الامتحانات المهمة.</p>
+          <a href="#contact">التفاصيل قريباً ←</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🏫</div>
+          <h3>فروع المدارس</h3>
+          <p>التعرّف على الفروع ومواقعها والمعلومات الخاصة بكل فرع.</p>
+          <a href="#branches">عرض الفروع ←</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">👨‍👩‍👧</div>
+          <h3>خدمات أولياء الأمور</h3>
+          <p>مساحة مستقبلية لتسهيل التواصل ومتابعة الإعلانات المتعلقة بالطلاب.</p>
+          <a href="#contact">التفاصيل قريباً ←</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">💬</div>
+          <h3>التواصل والاستفسارات</h3>
+          <p>إتاحة معلومات التواصل الرسمية بعد اعتمادها من إدارة المدارس.</p>
+          <a href="#contact">تواصل معنا ←</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about-grid">
+
+      <div>
+        <span class="badge">عن المنصة</span>
+
+        <h2>مدرستنا أقرب إليك</h2>
+
+        <p>
+          هذا الموقع نموذج أولي لفكرة منصة إلكترونية لمجموعة مدارس
+          دكتور أبوذر الكودة، بهدف عرض الخدمات التعليمية وتنظيم
+          المعلومات وتسهيل وصول الطلاب وأولياء الأمور إليها.
+        </p>
+
+        <div class="check">✓ واجهة عربية سهلة الاستخدام.</div>
+        <div class="check">✓ تصميم مناسب للهواتف والحواسيب.</div>
+        <div class="check">✓ قابل للتطوير وإضافة خدمات جديدة.</div>
+        <div class="check">✓ إمكانية إضافة الشعار والبيانات الرسمية لاحقاً.</div>
+      </div>
+
+      <div class="about-box">
+        <div class="big-icon">📘</div>
+        <h3>العلم أساس التقدم</h3>
+        <p>
+          نطمح إلى تجربة رقمية تجمع المعلومات المدرسية
+          في واجهة واضحة ومنظمة، وتدعم التواصل بين المدرسة
+          ومجتمعها التعليمي.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="branches">
+    <div class="container">
+
+      <div class="section-head">
+        <h2>فروع المدارس</h2>
+        <p>سيتم إدراج أسماء الفروع وعناوينها بعد استلام البيانات الرسمية.</p>
+      </div>
+
+      <div class="branch-grid">
+
+        <article class="branch-card">
+          <h3>الفرع الأول</h3>
+          <p>سيُضاف اسم الفرع وموقعه وبيانات التواصل بعد التأكيد.</p>
+          <span class="status">بانتظار البيانات الرسمية</span>
+        </article>
+
+        <article class="branch-card">
+          <h3>الفرع الثاني</h3>
+          <p>سيُضاف اسم الفرع وموقعه وبيانات التواصل بعد التأكيد.</p>
+          <span class="status">بانتظار البيانات الرسمية</span>
+        </article>
+
+        <article class="branch-card">
+          <h3>الفرع الثالث</h3>
+          <p>سيُضاف اسم الفرع وموقعه وبيانات التواصل بعد التأكيد.</p>
+          <span class="status">بانتظار البيانات الرسمية</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+
+      <h2>يسعدنا تواصلكم</h2>
+
+      <p>
+        ستُضاف أرقام الهواتف والبريد الإلكتروني والعناوين الرسمية
+        بعد اعتمادها من إدارة المدارس.
+      </p>
+
+      <a class="btn" href="#home">العودة إلى الرئيسية ↑</a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> مجموعة مدارس دكتور أبوذر الكودة</p>
+    <p>نموذج تجريبي غير معتمد رسمياً حتى الآن.</p>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("open");
+}
+
+function closeMenu() {
+  document.getElementById("navLinks").classList.remove("open");
+}
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
