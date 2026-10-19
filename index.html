@@ -2,21 +2,31 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="theme-color" content="#f5f8ff">
+<meta name="description" content="مجموعة مدارس دكتور أبوذر الكودة - منصة تعليمية عصرية للطلاب وأولياء الأمور.">
 
 <title>مجموعة مدارس دكتور أبوذر الكودة</title>
 
-<meta name="description" content="منصة مجموعة مدارس دكتور أبوذر الكودة التعليمية - التعليم، الأخبار، الجداول والخدمات المدرسية.">
+<!-- Arabic premium typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --blue: #0756c9;
-  --blue2: #0b76ed;
-  --light: #eef5ff;
+  --blue: #0878f9;
+  --blue-dark: #0755c9;
+  --cyan: #56b7ff;
+  --ink: #17243a;
+  --muted: #78869b;
+  --bg: #f5f8ff;
   --white: #ffffff;
-  --text: #14243b;
-  --muted: #66758a;
-  --border: #e3eaf4;
+  --line: rgba(135, 158, 192, .17);
+  --glass: rgba(255,255,255,.76);
+  --shadow: 0 18px 55px rgba(34, 84, 150, .09);
+  --radius: 26px;
 }
 
 * {
@@ -27,356 +37,624 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {
-  font-family: Arial, Tahoma, sans-serif;
-  background: #f7faff;
-  color: var(--text);
-  line-height: 1.8;
+  font-family: "Cairo", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Tahoma, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 5% 0%, #dceaff 0%, transparent 35%),
+    radial-gradient(ellipse at 100% 45%, #e4f4ff 0%, transparent 30%),
+    var(--bg);
+  line-height: 1.9;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, button, a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 button {
-  font-family: inherit;
-  cursor: pointer;
+  font: inherit;
+}
+
+button, a {
+  touch-action: manipulation;
 }
 
 .container {
-  width: min(1120px, 92%);
-  margin: auto;
+  width: min(1120px, 91%);
+  margin-inline: auto;
 }
 
-/* Header */
+::selection {
+  color: white;
+  background: var(--blue);
+}
 
-header {
-  background: rgba(255,255,255,.97);
-  border-bottom: 1px solid var(--border);
+/* Soft background decoration */
+
+.ambient {
+  position: fixed;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: .25;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ambient.one {
+  top: 15%;
+  right: -130px;
+  background: #60aaff;
+}
+
+.ambient.two {
+  bottom: 5%;
+  left: -130px;
+  background: #7edcff;
+}
+
+/* Demo notice */
+
+.demo-notice {
+  padding: 8px 15px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b5011;
+  background: rgba(255, 247, 220, .9);
+  border-bottom: 1px solid rgba(190, 151, 51, .13);
+}
+
+/* Navigation */
+
+.header-wrap {
   position: sticky;
   top: 0;
   z-index: 100;
+  padding: 12px 0;
+}
+
+header {
+  width: min(1160px, 94%);
+  margin: auto;
+  background: rgba(255, 255, 255, .78);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 22px;
+  box-shadow: 0 8px 35px rgba(29, 65, 120, .07);
 }
 
 .navbar {
-  min-height: 76px;
+  min-height: 72px;
+  padding: 10px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 14px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
+  min-width: 0;
 }
 
 .logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 15px;
+  width: 47px;
+  height: 47px;
+  flex: 0 0 47px;
   display: grid;
   place-items: center;
+  border-radius: 16px;
   color: white;
   font-size: 25px;
-  font-weight: bold;
-  background: linear-gradient(135deg, var(--blue), #39a0ff);
-  box-shadow: 0 6px 18px #0756c933;
+  font-weight: 900;
+  background: linear-gradient(145deg, #1595ff, #0755ce);
+  box-shadow: 0 7px 20px rgba(8,120,249,.28);
 }
 
-.brand h1 {
-  font-size: 17px;
+.brand-text h1 {
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 900;
+  color: #1555a5;
+}
+
+.brand-text p {
+  font-size: 10px;
   line-height: 1.5;
-  color: var(--blue);
-}
-
-.brand small {
   color: var(--muted);
-  font-size: 11px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
-  font-size: 14px;
+  gap: 4px;
+}
+
+.nav-links a {
+  padding: 9px 12px;
+  border-radius: 12px;
+  color: #52647d;
+  font-size: 12px;
+  font-weight: 700;
+  transition: .25s;
 }
 
 .nav-links a:hover {
-  color: var(--blue2);
+  background: #edf5ff;
+  color: var(--blue);
+}
+
+.nav-links .nav-cta {
+  background: var(--blue);
+  color: white;
+  margin-right: 4px;
+  box-shadow: 0 5px 14px #0878f927;
 }
 
 .menu-btn {
   display: none;
-  border: 0;
-  background: var(--light);
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
   color: var(--blue);
-  border-radius: 10px;
-  padding: 9px 13px;
+  background: #f4f8ff;
   font-size: 21px;
 }
 
 /* Hero */
 
 .hero {
-  padding: 85px 0 75px;
-  background:
-    radial-gradient(circle at 10% 15%, #cfe4ff 0, transparent 30%),
-    linear-gradient(135deg, #f7faff, #eaf3ff);
-  overflow: hidden;
+  padding: 67px 0 80px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr .8fr;
+  grid-template-columns: 1.12fr .88fr;
   align-items: center;
-  gap: 45px;
+  gap: 55px;
 }
 
-.badge {
-  display: inline-block;
-  padding: 7px 14px;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border: 1px solid rgba(8,120,249,.12);
   border-radius: 30px;
-  background: #dceaff;
+  background: rgba(255,255,255,.75);
   color: var(--blue);
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 22px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25c685;
+  box-shadow: 0 0 0 4px #25c6851c;
 }
 
 .hero h2 {
-  font-size: clamp(31px, 5vw, 49px);
-  line-height: 1.5;
-  margin-bottom: 18px;
+  font-size: clamp(34px, 5.2vw, 58px);
+  font-weight: 900;
+  line-height: 1.55;
+  letter-spacing: -1.3px;
+  margin-bottom: 15px;
 }
 
 .hero h2 span {
   color: var(--blue);
+  background: linear-gradient(90deg, #0878f9, #36a6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hero p {
+.hero-description {
+  max-width: 560px;
+  font-size: 14px;
   color: var(--muted);
-  font-size: 16px;
-  max-width: 600px;
-  margin-bottom: 28px;
+  line-height: 2.15;
+  margin-bottom: 27px;
 }
 
-.actions {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
 .btn {
-  border: 0;
-  border-radius: 13px;
-  padding: 13px 22px;
-  font-size: 14px;
-  font-weight: bold;
+  min-height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  transition: .2s;
+  gap: 9px;
+  padding: 11px 20px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  transition: transform .25s, box-shadow .25s, background .25s;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .btn-primary {
-  background: var(--blue);
   color: white;
-  box-shadow: 0 8px 20px #0756c933;
+  background: linear-gradient(135deg, #168aff, #0755c9);
+  box-shadow: 0 10px 24px rgba(8,120,249,.23);
 }
 
 .btn-secondary {
-  background: white;
-  color: var(--blue);
-  border: 1px solid var(--border);
+  color: #30547f;
+  background: rgba(255,255,255,.8);
+  border-color: var(--line);
 }
 
-.hero-visual {
-  min-height: 310px;
-  background: linear-gradient(145deg, #0756c9, #1689f8);
-  border-radius: 32px;
-  padding: 30px;
-  color: white;
+/* Hero visual */
+
+.hero-art {
+  min-height: 390px;
+  padding: 25px;
+  border-radius: 34px;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 22px 50px #0756c92b;
+  background:
+    radial-gradient(circle at 80% 5%, #8bd0ff 0, transparent 33%),
+    linear-gradient(145deg, #188cff 0%, #0751c7 100%);
+  box-shadow: 0 30px 70px rgba(4, 84, 195, .23);
+  isolation: isolate;
 }
 
-.hero-visual::before,
-.hero-visual::after {
+.hero-art::before {
   content: "";
   position: absolute;
-  border: 1px solid #ffffff33;
+  width: 310px;
+  height: 310px;
+  border: 1px solid #ffffff38;
   border-radius: 50%;
-}
-
-.hero-visual::before {
-  width: 270px;
-  height: 270px;
+  top: -110px;
   left: -90px;
-  top: -90px;
+  box-shadow: 0 0 0 35px #ffffff0a, 0 0 0 75px #ffffff08;
+  z-index: -1;
 }
 
-.hero-visual::after {
+.hero-art::after {
+  content: "";
+  position: absolute;
   width: 190px;
   height: 190px;
-  right: -60px;
-  bottom: -70px;
+  background: #ffffff12;
+  border-radius: 50%;
+  bottom: -80px;
+  right: -50px;
+  z-index: -1;
 }
 
-.school-icon {
-  font-size: 70px;
-  position: relative;
-  z-index: 1;
+.art-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-.hero-visual h3,
-.hero-visual p,
-.hero-visual .visual-bottom {
-  position: relative;
-  z-index: 1;
+.art-tag {
+  color: white;
+  background: #ffffff24;
+  border: 1px solid #ffffff30;
+  border-radius: 30px;
+  padding: 7px 12px;
+  font-size: 10px;
+  backdrop-filter: blur(10px);
 }
 
-.hero-visual h3 {
-  font-size: 24px;
-  margin-top: 15px;
+.art-symbol {
+  font-size: 25px;
 }
 
-.hero-visual p {
-  color: #e6f2ff;
-  font-size: 14px;
-  margin: 7px 0 0;
+.school-illustration {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 23px 0;
 }
 
-.visual-bottom {
-  border-top: 1px solid #ffffff40;
-  padding-top: 15px;
-  margin-top: 24px;
+.school-illustration .building {
+  font-size: clamp(90px, 13vw, 135px);
+  line-height: 1.4;
+  filter: drop-shadow(0 15px 12px #002e7c45);
+  animation: float 4s ease-in-out infinite;
+}
+
+.school-illustration h3 {
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+  margin-top: 10px;
+}
+
+.school-illustration p {
+  color: #e5f3ff;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.art-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  border-top: 1px solid #ffffff35;
+  padding-top: 16px;
+  font-size: 11px;
+}
+
+.art-bottom strong {
   font-size: 12px;
 }
 
-/* General sections */
-
-section {
-  padding: 70px 0;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
 }
 
-.section-head {
+/* Floating statistics */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+  margin-top: -26px;
+  position: relative;
+  z-index: 2;
+}
+
+.stat {
+  padding: 17px 10px;
   text-align: center;
-  margin-bottom: 35px;
+  border: 1px solid #ffffff;
+  border-radius: 19px;
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 10px 30px #214b8010;
 }
 
-.section-head h2 {
-  font-size: 29px;
-  margin-bottom: 8px;
+.stat strong {
+  display: block;
+  color: var(--blue);
+  font-size: 20px;
+  font-weight: 900;
 }
 
-.section-head p {
+.stat span {
+  display: block;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 10px;
+  margin-top: 3px;
 }
+
+/* Sections */
+
+section.content-section {
+  padding: 76px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.section-pill {
+  display: inline-block;
+  color: var(--blue);
+  background: #e7f1ff;
+  padding: 5px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.section-title h2 {
+  font-size: clamp(25px, 4vw, 34px);
+  font-weight: 900;
+  line-height: 1.6;
+}
+
+.section-title p {
+  max-width: 570px;
+  margin: 7px auto 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Services */
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 17px;
 }
 
-.card {
-  background: white;
+.service-card {
+  position: relative;
   padding: 25px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  transition: .25s;
+  border: 1px solid #ffffff;
+  border-radius: var(--radius);
+  background: var(--glass);
+  box-shadow: 0 8px 28px rgba(31, 72, 130, .035);
+  transition: transform .28s, box-shadow .28s, border-color .28s;
+  overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px #17365d0d;
-  border-color: #b9d5ff;
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: #c5ddff;
+  box-shadow: var(--shadow);
 }
 
-.card-icon {
-  width: 54px;
-  height: 54px;
+.service-icon {
+  width: 55px;
+  height: 55px;
   display: grid;
   place-items: center;
-  background: var(--light);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #edf6ff, #dcecff);
   color: var(--blue);
-  border-radius: 16px;
-  font-size: 27px;
-  margin-bottom: 17px;
+  font-size: 26px;
+  margin-bottom: 18px;
 }
 
-.card h3 {
-  font-size: 18px;
-  margin-bottom: 9px;
+.service-card h3 {
+  font-size: 17px;
+  font-weight: 900;
+  margin-bottom: 8px;
 }
 
-.card p {
-  font-size: 13px;
+.service-card p {
   color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
 }
 
-.card a {
+.service-link {
   display: inline-block;
-  margin-top: 15px;
   color: var(--blue);
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 15px;
 }
 
 /* About */
 
-.about {
-  background: white;
+.about-section {
+  background: linear-gradient(180deg, transparent, #eaf3ff8c, transparent);
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
   align-items: center;
+  gap: 38px;
 }
 
-.about-box {
-  background: var(--light);
-  border-radius: 25px;
-  padding: 30px;
+.about-copy h2 {
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 1.6;
+  margin-bottom: 13px;
 }
 
-.about-box .big-icon {
-  font-size: 60px;
-  margin-bottom: 10px;
+.about-copy h2 span {
+  color: var(--blue);
 }
 
-.about h2 {
-  font-size: 28px;
-  margin-bottom: 14px;
-}
-
-.about p {
+.about-copy > p {
   color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 15px;
+  font-size: 13px;
+  margin-bottom: 19px;
 }
 
-.check {
-  margin: 10px 0;
-  color: #23415f;
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin-top: 14px;
+  font-size: 13px;
+}
+
+.feature-icon {
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: #078a61;
+  background: #dff9ee;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.about-panel {
+  border-radius: 30px;
+  padding: 29px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid white;
+  box-shadow: var(--shadow);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-logo {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: white;
+  background: linear-gradient(135deg, #168aff, #0755c9);
+  font-size: 24px;
+}
+
+.panel-header h3 {
   font-size: 14px;
+  font-weight: 900;
+}
+
+.panel-header p {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.panel-message {
+  margin-top: 20px;
+  padding: 19px;
+  border-radius: 19px;
+  background: #edf5ff;
+}
+
+.panel-message strong {
+  font-size: 14px;
+}
+
+.panel-message p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 7px;
 }
 
 /* Branches */
@@ -384,130 +662,311 @@ section {
 .branch-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 17px;
 }
 
 .branch-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 22px;
+  background: rgba(255,255,255,.83);
+  border: 1px solid white;
+  border-radius: 23px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(31, 72, 130, .04);
+}
+
+.branch-symbol {
+  font-size: 29px;
+  margin-bottom: 11px;
 }
 
 .branch-card h3 {
-  color: var(--blue);
-  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 900;
 }
 
 .branch-card p {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
+  margin-top: 7px;
 }
 
-.status {
+.pending {
   display: inline-block;
-  margin-top: 14px;
-  font-size: 11px;
+  background: #fff5dc;
+  color: #856313;
+  border-radius: 30px;
   padding: 5px 10px;
-  border-radius: 20px;
-  background: #fff4d6;
-  color: #805b00;
+  margin-top: 14px;
+  font-size: 10px;
+  font-weight: 700;
 }
 
 /* Contact */
 
-.contact {
-  background: linear-gradient(135deg, #0756c9, #1689f8);
-  color: white;
+.contact-section {
+  padding: 30px 0 80px;
+}
+
+.contact-panel {
+  position: relative;
+  overflow: hidden;
   text-align: center;
+  padding: 47px 25px;
+  color: white;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 90% 0%, #52b9ff66, transparent 40%),
+    linear-gradient(135deg, #0878f9, #0751c7);
+  box-shadow: 0 25px 55px #0756c927;
 }
 
-.contact p {
-  color: #e2efff;
-  margin: 10px 0 25px;
-  font-size: 14px;
+.contact-panel h2 {
+  font-size: clamp(25px, 4vw, 35px);
+  font-weight: 900;
 }
 
-.contact .btn {
-  background: white;
+.contact-panel p {
+  max-width: 550px;
+  margin: 9px auto 22px;
+  color: #e3f1ff;
+  font-size: 13px;
+}
+
+.contact-panel .btn {
   color: var(--blue);
+  background: white;
 }
 
 /* Footer */
 
 footer {
-  padding: 27px 0;
-  background: #0c1c33;
-  color: #d9e7fa;
+  border-top: 1px solid var(--line);
+  padding: 25px 0;
   text-align: center;
-  font-size: 12px;
+  background: rgba(255,255,255,.58);
 }
 
-footer p + p {
+.footer-brand {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--blue-dark);
+}
+
+footer p {
+  font-size: 11px;
+  color: var(--muted);
   margin-top: 5px;
-  color: #a9bfdc;
 }
 
-/* Demo notice */
+/* Entrance animations */
 
-.demo-notice {
-  background: #fff8e7;
-  border-bottom: 1px solid #f1dfb4;
-  color: #735315;
-  padding: 10px 15px;
-  text-align: center;
-  font-size: 12px;
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .65s ease, transform .65s ease;
 }
 
-/* Mobile */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-@media (max-width: 800px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 76px;
-    right: 0;
-    left: 0;
-    padding: 20px 5%;
-    background: white;
-    border-bottom: 1px solid var(--border);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
+/* Responsive */
+
+@media (max-width: 900px) {
+  .hero-grid {
+    gap: 28px;
   }
 
-  .nav-links.open {
-    display: flex;
+  .nav-links a {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .services-grid,
+  .branch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .container {
+    width: 91%;
+  }
+
+  .header-wrap {
+    padding: 8px 0;
+  }
+
+  header {
+    width: 94%;
+    border-radius: 19px;
+  }
+
+  .navbar {
+    min-height: 64px;
+    padding: 8px 12px;
+  }
+
+  .logo {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+    border-radius: 14px;
+  }
+
+  .brand-text h1 {
+    font-size: 12px;
+  }
+
+  .brand-text p {
+    font-size: 9px;
   }
 
   .menu-btn {
     display: block;
+    flex: 0 0 42px;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 7px);
+    right: 3%;
+    left: 3%;
+    padding: 12px;
+    border-radius: 20px;
+    border: 1px solid white;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    box-shadow: var(--shadow);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-links.open {
+    display: flex;
+    animation: menuIn .2s ease-out;
+  }
+
+  .nav-links a {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .nav-links .nav-cta {
+    margin: 3px 0 0;
+    text-align: center;
+  }
+
+  @keyframes menuIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .hero {
-    padding: 55px 0;
+    padding: 43px 0 58px;
   }
 
-  .hero-grid,
-  .about-grid {
+  .hero-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 
-  .hero-visual {
-    min-height: 260px;
+  .hero h2 {
+    font-size: 37px;
+    letter-spacing: -.8px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .hero-art {
+    min-height: 325px;
+    padding: 21px;
+    border-radius: 27px;
+  }
+
+  .school-illustration .building {
+    font-size: 100px;
+  }
+
+  .stats {
+    gap: 8px;
+    margin-top: -18px;
+  }
+
+  .stat {
+    padding: 13px 5px;
+    border-radius: 15px;
+  }
+
+  .stat strong {
+    font-size: 18px;
+  }
+
+  .stat span {
+    font-size: 9px;
+  }
+
+  section.content-section {
+    padding: 56px 0;
+  }
+
+  .section-title {
+    margin-bottom: 25px;
+  }
+
+  .section-title h2 {
+    font-size: 26px;
   }
 
   .services-grid,
   .branch-grid {
     grid-template-columns: 1fr;
+    gap: 13px;
   }
 
-  section {
-    padding: 55px 0;
+  .service-card {
+    padding: 22px;
+    border-radius: 22px;
   }
 
-  .brand h1 {
-    font-size: 14px;
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 27px;
+  }
+
+  .about-copy h2 {
+    font-size: 28px;
+  }
+
+  .about-panel {
+    padding: 21px;
+    border-radius: 24px;
+  }
+
+  .contact-section {
+    padding-bottom: 55px;
+  }
+
+  .contact-panel {
+    padding: 35px 20px;
+    border-radius: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 </style>
@@ -515,58 +974,68 @@ footer p + p {
 
 <body>
 
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+
 <div class="demo-notice">
-  نسخة تجريبية للتصميم والعرض — بانتظار اعتماد وإضافة البيانات الرسمية للمدارس.
+  ✦ نموذج تجريبي للعرض — المعلومات والفروع بانتظار اعتمادها رسمياً
 </div>
 
+<div class="header-wrap">
 <header>
-  <div class="container navbar">
+  <div class="navbar container">
 
-    <a class="brand" href="#home">
+    <a class="brand" href="#home" aria-label="الرئيسية">
       <div class="logo">م</div>
-      <div>
+      <div class="brand-text">
         <h1>مجموعة مدارس<br>دكتور أبوذر الكودة</h1>
-        <small>نحو تعليم أفضل ومستقبل مشرق</small>
+        <p>نحو تعليم أفضل ومستقبل مشرق</p>
       </div>
     </a>
 
-    <button class="menu-btn" onclick="toggleMenu()" aria-label="فتح القائمة">
+    <button class="menu-btn" id="menuBtn"
+      aria-label="فتح القائمة" aria-expanded="false">
       ☰
     </button>
 
     <nav class="nav-links" id="navLinks">
-      <a href="#home" onclick="closeMenu()">الرئيسية</a>
-      <a href="#services" onclick="closeMenu()">خدماتنا</a>
-      <a href="#about" onclick="closeMenu()">عن المنصة</a>
-      <a href="#branches" onclick="closeMenu()">الفروع</a>
-      <a href="#contact" onclick="closeMenu()">تواصل معنا</a>
+      <a href="#home">الرئيسية</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#about">عن المنصة</a>
+      <a href="#branches">الفروع</a>
+      <a href="#contact" class="nav-cta">تواصل معنا ↗</a>
     </nav>
 
   </div>
 </header>
+</div>
 
 <main>
 
+  <!-- Hero -->
   <section class="hero" id="home">
     <div class="container hero-grid">
 
-      <div>
-        <span class="badge">منصة تعليمية مدرسية</span>
+      <div class="reveal">
+        <div class="eyebrow">
+          <span class="live-dot"></span>
+          بوابتكم التعليمية الرقمية
+        </div>
 
         <h2>
-          التعليم طريقنا<br>
-          إلى <span>مستقبل أفضل</span>
+          تعليم يصنع<br>
+          <span>مستقبلاً مشرقاً</span>
         </h2>
 
-        <p>
-          مرحباً بكم في الموقع التجريبي لمجموعة مدارس دكتور أبوذر الكودة.
-          نسعى إلى تقديم تجربة تعليمية منظمة تجمع المدرسة والطالب
-          وولي الأمر في مكان واحد.
+        <p class="hero-description">
+          مرحباً بكم في النموذج التجريبي لمنصة مجموعة مدارس
+          دكتور أبوذر الكودة، تجربة رقمية حديثة تجمع المعلومات
+          التعليمية والخدمات المدرسية في مكان واحد.
         </p>
 
-        <div class="actions">
+        <div class="hero-actions">
           <a class="btn btn-primary" href="#services">
-            اكتشف خدماتنا ←
+            اكتشف خدماتنا <span>←</span>
           </a>
 
           <a class="btn btn-secondary" href="#about">
@@ -575,155 +1044,250 @@ footer p + p {
         </div>
       </div>
 
-      <div class="hero-visual">
-        <div class="school-icon">🎓</div>
+      <div class="reveal">
+        <div class="hero-art">
 
-        <div>
-          <h3>معاً نحو التميز</h3>
-          <p>بيئة تعليمية ملهمة، ومعرفة تصنع المستقبل.</p>
+          <div class="art-top">
+            <span class="art-tag">منصة تعليمية عصرية</span>
+            <span class="art-symbol">✦</span>
+          </div>
+
+          <div class="school-illustration">
+            <div class="building">🏫</div>
+            <h3>معاً نحو التميز</h3>
+            <p>العلم والمعرفة أساس بناء المستقبل</p>
+          </div>
+
+          <div class="art-bottom">
+            <strong>مجموعة مدارس دكتور أبوذر الكودة</strong>
+            <span>التعليم أولاً ✦</span>
+          </div>
+
         </div>
 
-        <div class="visual-bottom">
-          مجموعة مدارس دكتور أبوذر الكودة
+        <div class="stats">
+          <div class="stat">
+            <strong>01</strong>
+            <span>التعليم</span>
+          </div>
+          <div class="stat">
+            <strong>02</strong>
+            <span>التواصل</span>
+          </div>
+          <div class="stat">
+            <strong>03</strong>
+            <span>المستقبل</span>
+          </div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <section id="services">
+  <!-- Services -->
+  <section class="content-section" id="services">
     <div class="container">
 
-      <div class="section-head">
-        <h2>خدماتنا التعليمية</h2>
-        <p>خدمات مقترحة لتنظيم التواصل والعملية التعليمية.</p>
+      <div class="section-title reveal">
+        <span class="section-pill">خدمات المنصة</span>
+        <h2>كل ما يهم رحلتكم التعليمية</h2>
+        <p>
+          أقسام مقترحة لتسهيل الوصول إلى المعلومات والخدمات
+          المدرسية من الهاتف أو الحاسوب.
+        </p>
       </div>
 
       <div class="services-grid">
 
-        <article class="card">
-          <div class="card-icon">📚</div>
+        <article class="service-card reveal">
+          <div class="service-icon">📚</div>
           <h3>الدروس والمراجعات</h3>
-          <p>مساحة مقترحة لنشر الدروس والمراجعات والمواد التعليمية للطلاب.</p>
-          <a href="#contact">التفاصيل قريباً ←</a>
+          <p>
+            قسم مخصص مستقبلاً للدروس والمراجعات والمواد
+            التعليمية المساعدة للطلاب.
+          </p>
+          <a class="service-link" href="#contact">التفاصيل قريباً ←</a>
         </article>
 
-        <article class="card">
-          <div class="card-icon">📢</div>
+        <article class="service-card reveal">
+          <div class="service-icon">📣</div>
           <h3>الأخبار والإعلانات</h3>
-          <p>متابعة إعلانات المدرسة والتنويهات والأنشطة المدرسية في مكان واحد.</p>
-          <a href="#contact">التفاصيل قريباً ←</a>
+          <p>
+            متابعة أخبار المدارس والإعلانات والتنويهات
+            والأنشطة التعليمية في مكان واحد.
+          </p>
+          <a class="service-link" href="#contact">التفاصيل قريباً ←</a>
         </article>
 
-        <article class="card">
-          <div class="card-icon">🗓️</div>
+        <article class="service-card reveal">
+          <div class="service-icon">🗓️</div>
           <h3>الجداول والامتحانات</h3>
-          <p>قسم مقترح للجداول الدراسية ومواعيد الامتحانات المهمة.</p>
-          <a href="#contact">التفاصيل قريباً ←</a>
+          <p>
+            مساحة مستقبلية لعرض الجداول الدراسية
+            ومواعيد الامتحانات والإرشادات.
+          </p>
+          <a class="service-link" href="#contact">التفاصيل قريباً ←</a>
         </article>
 
-        <article class="card">
-          <div class="card-icon">🏫</div>
+        <article class="service-card reveal">
+          <div class="service-icon">🏫</div>
           <h3>فروع المدارس</h3>
-          <p>التعرّف على الفروع ومواقعها والمعلومات الخاصة بكل فرع.</p>
-          <a href="#branches">عرض الفروع ←</a>
+          <p>
+            الوصول إلى بيانات الفروع ومواقعها
+            ومعلومات التواصل الخاصة بها.
+          </p>
+          <a class="service-link" href="#branches">استكشف الفروع ←</a>
         </article>
 
-        <article class="card">
-          <div class="card-icon">👨‍👩‍👧</div>
-          <h3>خدمات أولياء الأمور</h3>
-          <p>مساحة مستقبلية لتسهيل التواصل ومتابعة الإعلانات المتعلقة بالطلاب.</p>
-          <a href="#contact">التفاصيل قريباً ←</a>
+        <article class="service-card reveal">
+          <div class="service-icon">👨‍👩‍👧</div>
+          <h3>أولياء الأمور</h3>
+          <p>
+            خدمات مقترحة لتسهيل التواصل بين المدرسة
+            وأولياء الأمور ومتابعة الإعلانات.
+          </p>
+          <a class="service-link" href="#contact">التفاصيل قريباً ←</a>
         </article>
 
-        <article class="card">
-          <div class="card-icon">💬</div>
-          <h3>التواصل والاستفسارات</h3>
-          <p>إتاحة معلومات التواصل الرسمية بعد اعتمادها من إدارة المدارس.</p>
-          <a href="#contact">تواصل معنا ←</a>
+        <article class="service-card reveal">
+          <div class="service-icon">💬</div>
+          <h3>الدعم والتواصل</h3>
+          <p>
+            الوصول إلى وسائل التواصل والاستفسارات
+            الرسمية بعد اعتمادها من الإدارة.
+          </p>
+          <a class="service-link" href="#contact">اعرف المزيد ←</a>
         </article>
 
       </div>
     </div>
   </section>
 
-  <section class="about" id="about">
+  <!-- About -->
+  <section class="content-section about-section" id="about">
     <div class="container about-grid">
 
-      <div>
-        <span class="badge">عن المنصة</span>
+      <div class="about-copy reveal">
+        <span class="section-pill">عن المشروع</span>
 
-        <h2>مدرستنا أقرب إليك</h2>
+        <h2>
+          تجربة تعليمية<br>
+          <span>بروح المستقبل</span>
+        </h2>
 
         <p>
-          هذا الموقع نموذج أولي لفكرة منصة إلكترونية لمجموعة مدارس
-          دكتور أبوذر الكودة، بهدف عرض الخدمات التعليمية وتنظيم
-          المعلومات وتسهيل وصول الطلاب وأولياء الأمور إليها.
+          هذا النموذج الأولي لفكرة منصة إلكترونية لمجموعة مدارس
+          دكتور أبوذر الكودة، صُمم لعرض تصور حديث للموقع قبل
+          اعتماد المعلومات والخدمات النهائية.
         </p>
 
-        <div class="check">✓ واجهة عربية سهلة الاستخدام.</div>
-        <div class="check">✓ تصميم مناسب للهواتف والحواسيب.</div>
-        <div class="check">✓ قابل للتطوير وإضافة خدمات جديدة.</div>
-        <div class="check">✓ إمكانية إضافة الشعار والبيانات الرسمية لاحقاً.</div>
+        <div class="feature">
+          <span class="feature-icon">✓</span>
+          <span>تصميم عربي واضح ومتوافق مع اتجاه الكتابة من اليمين إلى اليسار.</span>
+        </div>
+
+        <div class="feature">
+          <span class="feature-icon">✓</span>
+          <span>واجهة متجاوبة مع الهواتف والأجهزة اللوحية والحواسيب.</span>
+        </div>
+
+        <div class="feature">
+          <span class="feature-icon">✓</span>
+          <span>ألوان هادئة وبطاقات مستوحاة من تصميم iOS.</span>
+        </div>
+
+        <div class="feature">
+          <span class="feature-icon">✓</span>
+          <span>قابل للتطوير وإضافة الشعار والبيانات الرسمية لاحقاً.</span>
+        </div>
       </div>
 
-      <div class="about-box">
-        <div class="big-icon">📘</div>
-        <h3>العلم أساس التقدم</h3>
-        <p>
-          نطمح إلى تجربة رقمية تجمع المعلومات المدرسية
-          في واجهة واضحة ومنظمة، وتدعم التواصل بين المدرسة
-          ومجتمعها التعليمي.
-        </p>
+      <div class="about-panel reveal">
+        <div class="panel-header">
+          <div class="panel-logo">م</div>
+          <div>
+            <h3>مجموعة مدارس دكتور أبوذر الكودة</h3>
+            <p>الهوية التعليمية للمنصة</p>
+          </div>
+        </div>
+
+        <div class="panel-message">
+          <strong>رؤيتنا التعليمية</strong>
+          <p>
+            تقديم تجربة رقمية منظمة تسهّل الوصول إلى المعلومات
+            المدرسية وتدعم التواصل بين المدرسة والطلاب وأولياء الأمور.
+          </p>
+        </div>
+
+        <div class="panel-message">
+          <strong>خطوة نحو التطوير</strong>
+          <p>
+            يمكن تطوير هذا النموذج لاحقاً ليشمل لوحة إدارة،
+            ونشر الأخبار والدروس، وخدمات إضافية حسب متطلبات المدرسة.
+          </p>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <section id="branches">
+  <!-- Branches -->
+  <section class="content-section" id="branches">
     <div class="container">
 
-      <div class="section-head">
-        <h2>فروع المدارس</h2>
-        <p>سيتم إدراج أسماء الفروع وعناوينها بعد استلام البيانات الرسمية.</p>
+      <div class="section-title reveal">
+        <span class="section-pill">شبكة المدارس</span>
+        <h2>فروع مجموعة المدارس</h2>
+        <p>
+          ستُضاف أسماء الفروع ومواقعها الصحيحة بعد توفير
+          المعلومات الرسمية من إدارة المدارس.
+        </p>
       </div>
 
       <div class="branch-grid">
 
-        <article class="branch-card">
+        <article class="branch-card reveal">
+          <div class="branch-symbol">🏫</div>
           <h3>الفرع الأول</h3>
-          <p>سيُضاف اسم الفرع وموقعه وبيانات التواصل بعد التأكيد.</p>
-          <span class="status">بانتظار البيانات الرسمية</span>
+          <p>اسم الفرع وعنوانه وبياناته بانتظار التأكيد الرسمي.</p>
+          <span class="pending">بانتظار البيانات</span>
         </article>
 
-        <article class="branch-card">
+        <article class="branch-card reveal">
+          <div class="branch-symbol">📍</div>
           <h3>الفرع الثاني</h3>
-          <p>سيُضاف اسم الفرع وموقعه وبيانات التواصل بعد التأكيد.</p>
-          <span class="status">بانتظار البيانات الرسمية</span>
+          <p>اسم الفرع وعنوانه وبياناته بانتظار التأكيد الرسمي.</p>
+          <span class="pending">بانتظار البيانات</span>
         </article>
 
-        <article class="branch-card">
+        <article class="branch-card reveal">
+          <div class="branch-symbol">🎓</div>
           <h3>الفرع الثالث</h3>
-          <p>سيُضاف اسم الفرع وموقعه وبيانات التواصل بعد التأكيد.</p>
-          <span class="status">بانتظار البيانات الرسمية</span>
+          <p>اسم الفرع وعنوانه وبياناته بانتظار التأكيد الرسمي.</p>
+          <span class="pending">بانتظار البيانات</span>
         </article>
 
       </div>
     </div>
   </section>
 
-  <section class="contact" id="contact">
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
     <div class="container">
+      <div class="contact-panel reveal">
 
-      <h2>يسعدنا تواصلكم</h2>
+        <h2>التواصل يصنع الفرق</h2>
 
-      <p>
-        ستُضاف أرقام الهواتف والبريد الإلكتروني والعناوين الرسمية
-        بعد اعتمادها من إدارة المدارس.
-      </p>
+        <p>
+          ستُضاف وسائل التواصل والعناوين الرسمية بعد اعتمادها
+          من إدارة مجموعة المدارس.
+        </p>
 
-      <a class="btn" href="#home">العودة إلى الرئيسية ↑</a>
+        <a href="#home" class="btn">
+          العودة إلى الرئيسية ↑
+        </a>
 
+      </div>
     </div>
   </section>
 
@@ -731,22 +1295,59 @@ footer p + p {
 
 <footer>
   <div class="container">
-    <p>© <span id="year"></span> مجموعة مدارس دكتور أبوذر الكودة</p>
-    <p>نموذج تجريبي غير معتمد رسمياً حتى الآن.</p>
+    <div class="footer-brand">مجموعة مدارس دكتور أبوذر الكودة</div>
+    <p>التعليم طريقنا إلى مستقبل أفضل.</p>
+    <p>© <span id="year"></span> — نموذج تجريبي غير معتمد رسمياً حتى الآن.</p>
   </div>
 </footer>
 
 <script>
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("open");
-}
+(function () {
+  var menuBtn = document.getElementById("menuBtn");
+  var navLinks = document.getElementById("navLinks");
 
-function closeMenu() {
-  document.getElementById("navLinks").classList.remove("open");
-}
+  menuBtn.addEventListener("click", function () {
+    var isOpen = navLinks.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    menuBtn.textContent = isOpen ? "✕" : "☰";
+  });
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+  var links = navLinks.querySelectorAll("a");
+
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function () {
+      navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.textContent = "☰";
+    });
+  }
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  var revealElements = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealElements.forEach(function (element) {
+      observer.observe(element);
+    });
+  } else {
+    revealElements.forEach(function (element) {
+      element.classList.add("visible");
+    });
+  }
+})();
 </script>
 
 </body>
